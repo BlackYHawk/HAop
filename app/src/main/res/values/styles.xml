@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="TextAppear.Theme.blue_Size14" parent="android:TextAppearance.Theme">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FF0096ff</item>
+    </style>
+    
+
+</resources>

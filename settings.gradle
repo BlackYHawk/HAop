@@ -1,1 +1,1 @@
-include ':app', ':log-runtime', ':log-annotation', ':log-plugin'
+include ':app', ':log-runtime', ':log-annotation', ':buildSrc'

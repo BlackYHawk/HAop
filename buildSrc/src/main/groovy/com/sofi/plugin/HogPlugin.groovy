@@ -25,10 +25,8 @@ class HogPlugin implements Plugin<Project> {
         }
 
         project.dependencies {
-            debugCompile 'com.jakewharton.hugo:hugo-runtime:1.2.2-SNAPSHOT'
             // TODO this should come transitively
             debugCompile 'org.aspectj:aspectjrt:1.8.6'
-            compile 'com.jakewharton.hugo:hugo-annotations:1.2.2-SNAPSHOT'
         }
 
         variants.all { variant ->
@@ -36,7 +34,7 @@ class HogPlugin implements Plugin<Project> {
                 log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
                 return;
             } else if (!project.hugo.enabled) {
-                log.debug("Hugo is not disabled.")
+                log.debug("Hog is not disabled.")
                 return;
             }
 
@@ -44,7 +42,7 @@ class HogPlugin implements Plugin<Project> {
             javaCompile.doLast {
                 String[] args = [
                         "-showWeaveInfo",
-                        "-1.5",
+                        "-1.8",
                         "-inpath", javaCompile.destinationDir.toString(),
                         "-aspectpath", javaCompile.classpath.asPath,
                         "-d", javaCompile.destinationDir.toString(),

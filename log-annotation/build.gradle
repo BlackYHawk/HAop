@@ -6,4 +6,3 @@ android {
 }
 
 apply from: 'bintray.gradle'
-

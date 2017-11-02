@@ -1,8 +1,6 @@
 package com.hawk.test.player;
 
-import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -44,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         LOG.E(TAG, "url:" + url);
 
-        Intent it = new Intent(Intent.ACTION_VIEW);
+/*        Intent it = new Intent(Intent.ACTION_VIEW);
         Uri uri = Uri.parse(url);
         it.setDataAndType(uri , "video/mp4");
-        startActivity(it);
-      //  initView();
+        startActivity(it);*/
+        initView();
     }
 
     private void initView() {

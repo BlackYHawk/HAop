@@ -3,10 +3,11 @@ import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
 apply plugin: 'com.android.library'
+apply from: "https://raw.githubusercontent.com/BlackYHawk/BintrayUploadScript/master/bintray.gradle"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
     lintOptions {
         abortOnError false
@@ -54,3 +55,4 @@ android.libraryVariants.all { variant ->
         }
     }
 }
+

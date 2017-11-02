@@ -3,10 +3,13 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-        classpath 'com.novoda:bintray-release:0.4.0'
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,6 +18,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
@@ -22,13 +26,24 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-//添加
 ext {
-    userOrg = 'hy'
-    groupId = 'io.github.blackyhawk'
-    uploadName = 'Hog'
-    publishVersion = '1.0.0'
-    desc = 'Annotation-triggered method call logging for your debug builds.'
-    website = 'https://github.com/BlackYHawk/Hog/'
-    licences = ['Apache-2.0']
+    userName = 'BlackYHawk'
+    developer = [id   : 'BlackYHawk',
+                 name : 'BlackYHawk',
+                 email: 'saruka072@gmail.com']
+    license = [id  : 'MIT',
+               name: 'The MIT License (MIT)',
+               url : 'http://opensource.org/licenses/MIT']
+    groupName = 'io.github.blackyhawk'
+    artifactName = 'Hog'
+    artifactDescription = 'Record Log library. Super simple, but with enough functionality.'
+    artifactLabels = ['Log']
+    releaseVersionCode = 1
+    releaseVersionName = '1.0.0'
+
+    androidCompileSdkVersion = 26
+    androidBuildToolsVersion = '26.0.2'
+    androidSupportSdkVersion = '26.0.2'
+    minSdkVersion = 16
+    targetSdkVersion = 26
 }

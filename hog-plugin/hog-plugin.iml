@@ -101,5 +101,15 @@
     <orderEntry type="library" exported="" scope="PROVIDED" name="gradle-api-4.1" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="groovy-all-2.4.11" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="gradle-installation-beacon-4.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1-javadoc" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1-sources" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="hog-plugin.hog-plugin-1.0.1" level="project" />
   </component>
 </module>

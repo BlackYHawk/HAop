@@ -1,5 +1,7 @@
 package com.hawk.hog.plugin
 
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.LibraryPlugin
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
@@ -28,16 +30,18 @@ class HogPlugin implements Plugin<Project> {
 
         project.dependencies {
             // TODO this should come transitively
-            debugCompile 'io.github.blackyhawk:hog-runtime:1.0.0'
+            debugCompile 'io.github.blackyhawk:hog-runtime:1.0.1'
             debugCompile 'org.aspectj:aspectjrt:1.8.9'
-            compile 'io.github.blackyhawk:hog-annotation:1.0.0'
+            compile 'io.github.blackyhawk:hog-annotation:1.0.1'
         }
+
+        project.extensions.create('hog', HogExtension)
 
         variants.all { variant ->
             if (!variant.buildType.isDebuggable()) {
                 log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
                 return;
-            } else if (!project.hugo.enabled) {
+            } else if (!project.hog.enabled) {
                 log.debug("Hog is not disabled.")
                 return;
             }

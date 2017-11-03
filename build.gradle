@@ -2,6 +2,8 @@
 
 buildscript {
     repositories {
+        mavenCentral()
+        mavenLocal()
         jcenter()
         google()
     }
@@ -10,6 +12,7 @@ buildscript {
         classpath 'org.aspectj:aspectjtools:1.8.9'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'io.github.blackyhawk:hog-plugin:1.0.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -17,8 +20,13 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
+        mavenLocal()
         jcenter()
         google()
+        maven {
+            url 'https://dl.bintray.com/hy/maven/'
+        }
     }
 }
 
@@ -38,8 +46,8 @@ ext {
     artifactName = 'Hog'
     artifactDescription = 'Record Log library. Super simple, but with enough functionality.'
     artifactLabels = ['Log']
-    releaseVersionCode = 1
-    releaseVersionName = '1.0.0'
+    releaseVersionCode = 2
+    releaseVersionName = '1.0.1'
 
     androidCompileSdkVersion = 26
     androidBuildToolsVersion = '26.0.2'

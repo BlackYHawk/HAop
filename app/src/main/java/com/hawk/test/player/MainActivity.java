@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.hawk.hog.RecordLog;
 import com.hawk.test.R;
 import com.hawk.test.util.LOG;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
     }
 
+    @RecordLog
     private void initView() {
         surfaceView = (SurfaceView)this.findViewById(R.id.surfaceView);
         playBtn = (ImageView) findViewById(R.id.playbtn);

@@ -1,1 +1,1 @@
-include ':app', ':hog-runtime', ':hog-annotation', ':hog-plugin'
+include ':app', ':aop-runtime', ':aop-annotation', ':aop-plugin'

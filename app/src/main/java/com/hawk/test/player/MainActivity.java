@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.hawk.hog.RecordLog;
+import com.hawk.aop.LogMethod;
 import com.hawk.test.R;
 import com.hawk.test.util.LOG;
 
@@ -36,21 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        url = getIntent().getStringExtra("url");
-        if(url == null || url.equals("")) {
-            url = "http://Blackhawk:35e169d7359aa238489884fda7d21070@ss.99guard.com:80/media/video/2016/06/07/08_00_28_n.mp4";
-        }
-        LOG.E(TAG, "url:" + url);
-
-/*        Intent it = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.parse(url);
-        it.setDataAndType(uri , "video/mp4");
-        startActivity(it);*/
+        url = "http://Blackhawk:35e169d7359aa238489884fda7d21070@ss.99guard.com:80/media/video/2016/06/07/08_00_28_n.mp4";
         initView();
     }
 
-    @RecordLog
+    @LogMethod
     private void initView() {
         surfaceView = (SurfaceView)this.findViewById(R.id.surfaceView);
         playBtn = (ImageView) findViewById(R.id.playbtn);

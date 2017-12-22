@@ -1,5 +1,5 @@
 apply plugin: 'groovy'
-apply from: "https://raw.githubusercontent.com/BlackYHawk/BintrayUploadScript/master/bintray.gradle"
+//apply from: "https://raw.githubusercontent.com/BlackYHawk/BintrayUploadScript/master/bintray.gradle"
 
 dependencies {
     compile gradleApi()

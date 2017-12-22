@@ -3,7 +3,6 @@ package com.hawk.test.player;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -115,10 +114,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LOG.E(TAG, "onError what : " + what);
         switch (what) {
             case MediaPlayer.MEDIA_ERROR_SERVER_DIED:
-                Log.v("Play Error:::", "MEDIA_ERROR_SERVER_DIED");
+                android.util.Log.v("Play Error:::", "MEDIA_ERROR_SERVER_DIED");
                 break;
             case MediaPlayer.MEDIA_ERROR_UNKNOWN:
-                Log.v("Play Error:::", "MEDIA_ERROR_UNKNOWN");
+                android.util.Log.v("Play Error:::", "MEDIA_ERROR_UNKNOWN");
                 break;
             default:
                 break;

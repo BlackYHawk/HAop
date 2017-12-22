@@ -1,18 +1,16 @@
 package com.hawk.aop.internal;
 
 import android.os.Build;
+import android.os.Looper;
 import android.os.Trace;
 import android.util.Log;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-
-import java.util.concurrent.TimeUnit;
+import org.aspectj.lang.reflect.CodeSignature;
 
 /**
  * Created by lan on 2017/2/6.
@@ -20,46 +18,56 @@ import java.util.concurrent.TimeUnit;
 @Aspect
 public class LogMethodAspect {
 
-    @Pointcut("execution(@LogMethod * *(..))")
-    public void method() {}
+    @Pointcut("within(@com.hawk.aop.LogMethod *)")
+    public void withinAnnotatedLogClass() {}
 
-    @Pointcut("execution(@LogMethod * *(..))")
-    public void constructor() {}
+    @Pointcut("execution(!synthetic * *(..)) && withinAnnotatedLogClass()")
+    public void methodInsideAnnotatedLogType() {}
 
-    @Around("method() || constructor()")
+    @Pointcut("execution(!synthetic *.new(..)) && withinAnnotatedLogClass()")
+    public void constructorInsideAnnotatedLogType() {}
+
+    @Pointcut("execution(@com.hawk.aop.LogMethod * *(..)) || methodInsideAnnotatedLogType()")
+    public void methodLog() {}
+
+    @Pointcut("execution(@com.hawk.aop.LogMethod *.new(..)) || constructorInsideAnnotatedLogType()")
+    public void constructorLog() {}
+
+    @Around("methodLog() || constructorLog()")
     public Object logAndExecutor(ProceedingJoinPoint joinPoint) throws Throwable {
-        long startAnosTime = System.nanoTime();
-        Object result = joinPoint.proceed();
-        long stopAnosTime = System.nanoTime();
-        long lengthMilis = TimeUnit.NANOSECONDS.toMillis(stopAnosTime - startAnosTime);
-
-        exitMethod(joinPoint, result, lengthMilis);
-        return result;
+        enterMethod(joinPoint);
+        return joinPoint.proceed();
     }
 
-    private static void exitMethod(JoinPoint joinPoint, Object result, long lengthMillis) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            Trace.endSection();
+    private void enterMethod(JoinPoint joinPoint) {
+        CodeSignature codeSignature = (CodeSignature) joinPoint.getSignature();
+
+        Class<?> cls = codeSignature.getDeclaringType();
+        String methodName = codeSignature.getName();
+        String[] parameterNames = codeSignature.getParameterNames();
+        Object[] parameterValues = joinPoint.getArgs();
+
+        StringBuilder builder = new StringBuilder("\u21E0 ");
+        builder.append(methodName).append('(');
+        for (int i = 0; i < parameterValues.length; i++) {
+            if (i > 0) {
+                builder.append(", ");
+            }
+            builder.append(parameterNames[i]).append('=');
+            builder.append(Strings.toString(parameterValues[i]));
         }
+        builder.append(")");
 
-        Signature signature = joinPoint.getSignature();
-        Class<?> cls = signature.getDeclaringType();
-        String methodName = signature.getName();
-        boolean hasReturnType = signature instanceof MethodSignature
-                && ((MethodSignature) signature).getReturnType() != void.class;
-
-        StringBuilder builder = new StringBuilder("\u21E0 ")
-                .append(methodName)
-                .append(" [")
-                .append(lengthMillis)
-                .append("ms]");
-
-        if (hasReturnType) {
-            builder.append(" = ");
-            builder.append(Strings.toString(result));
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            builder.append(" [Thread:\"").append(Thread.currentThread().getName()).append("\"]");
         }
 
         Log.v(asTag(cls), builder.toString());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            final String section = builder.toString().substring(2);
+            Trace.beginSection(section);
+        }
     }
 
     private static String asTag(Class<?> cls) {

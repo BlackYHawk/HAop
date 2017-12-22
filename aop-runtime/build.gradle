@@ -16,7 +16,7 @@ android {
 dependencies {
     compile project(':aop-annotation')
     compile 'org.aspectj:aspectjrt:1.8.9'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 android.libraryVariants.all { variant ->

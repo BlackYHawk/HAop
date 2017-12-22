@@ -43,11 +43,11 @@ ext {
                name: 'The MIT License (MIT)',
                url : 'http://opensource.org/licenses/MIT']
     groupName = 'io.github.blackyhawk'
-    artifactName = 'Hog'
+    artifactName = 'HAop'
     artifactDescription = 'Record Log library. Super simple, but with enough functionality.'
-    artifactLabels = ['Log']
-    releaseVersionCode = 2
-    releaseVersionName = '1.0.1'
+    artifactLabels = ['AOP']
+    releaseVersionCode = 1
+    releaseVersionName = '1.0.0'
 
     androidCompileSdkVersion = 26
     androidBuildToolsVersion = '26.0.2'

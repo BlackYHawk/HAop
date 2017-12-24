@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Aspect
 public class TraceAspect {
 
-    @Pointcut("@within(@com.hawk.aop.Trace *)*")
+    @Pointcut("within(@com.hawk.aop.Trace *)")
     public void withinAnnotionedTraceClass() {}
 
     @Pointcut("execution(!synthetic * *(..)) && withinAnnotionedTraceClass()")

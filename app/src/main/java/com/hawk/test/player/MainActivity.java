@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.hawk.aop.LogMethod;
+import com.hawk.aop.Trace;
 import com.hawk.test.R;
 import com.hawk.test.util.LOG;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @LogMethod
+    @Trace
     private void initView() {
         surfaceView = (SurfaceView)this.findViewById(R.id.surfaceView);
         playBtn = (ImageView) findViewById(R.id.playbtn);

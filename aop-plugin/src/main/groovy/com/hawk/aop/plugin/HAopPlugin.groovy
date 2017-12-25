@@ -30,9 +30,9 @@ class HAopPlugin implements Plugin<Project> {
 
         project.dependencies {
             // TODO this should come transitively
-            debugCompile 'io.github.blackyhawk:hog-runtime:1.0.1'
+            debugCompile 'io.github.blackyhawk:aop-runtime:1.0.0'
             debugCompile 'org.aspectj:aspectjrt:1.8.9'
-            compile 'io.github.blackyhawk:hog-annotation:1.0.1'
+            compile 'io.github.blackyhawk:aop-annotation:1.0.0'
         }
 
         project.extensions.create('haop', HAopExtension)

@@ -61,6 +61,7 @@ public class LogMethodAspect {
         if (Looper.myLooper() != Looper.getMainLooper()) {
             builder.append(" [Thread:\"").append(Thread.currentThread().getName()).append("\"]");
         }
+        builder.append(" [TIME:\"").append(System.currentTimeMillis()).append("\"]");
 
         Log.v(asTag(cls), builder.toString());
 

@@ -71,9 +71,9 @@ variants.all { variant ->
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.androidSupportSdkVersion"
-    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.zxing:core:3.3.3'
     implementation 'com.google.zxing:android-core:3.3.0'
-    compile project(':aop-runtime')
+    api project(':aop-runtime')
 }
 

@@ -30,9 +30,9 @@ class HAopPlugin implements Plugin<Project> {
 
         project.dependencies {
             // TODO this should come transitively
-            debugCompile 'io.github.blackyhawk:hog-runtime:1.0.1'
-            debugCompile 'org.aspectj:aspectjrt:1.8.9'
-            compile 'io.github.blackyhawk:hog-annotation:1.0.1'
+            debugApi 'io.github.blackyhawk:aop-runtime:1.0.5'
+            debugApi 'org.aspectj:aspectjrt:1.8.9'
+            api 'io.github.blackyhawk:aop-annotation:1.0.4'
         }
 
         project.extensions.create('haop', HAopExtension)
@@ -41,8 +41,8 @@ class HAopPlugin implements Plugin<Project> {
             if (!variant.buildType.isDebuggable()) {
                 log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
                 return;
-            } else if (!project.hog.enabled) {
-                log.debug("Hog is not disabled.")
+            } else if (!project.haop.enabled) {
+                log.debug("Haop is not disabled.")
                 return;
             }
 

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-//apply from: "https://raw.githubusercontent.com/BlackYHawk/BintrayUploadScript/master/bintray.gradle"
+apply from: "https://raw.githubusercontent.com/BlackYHawk/BintrayUploadScript/master/bintray.gradle"
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
@@ -14,8 +14,9 @@ android {
 }
 
 dependencies {
-    compile project(':aop-annotation')
-    compile 'org.aspectj:aspectjrt:1.8.9'
+    api 'io.github.blackyhawk:aop-annotation:1.0.4'
+  //  api project(':aop-annotation')
+    api 'org.aspectj:aspectjrt:1.8.9'
     testImplementation 'junit:junit:4.12'
 }
 

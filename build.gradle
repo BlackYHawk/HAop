@@ -2,13 +2,13 @@
 
 buildscript {
     repositories {
-        mavenCentral()
-        mavenLocal()
-        jcenter()
+        maven {url 'https://maven.aliyun.com/repository/public'}
+        maven {url 'https://maven.aliyun.com/repository/google'}
+        maven {url 'https://maven.aliyun.com/repository/gradle-plugin'}
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath 'org.aspectj:aspectjtools:1.8.9'
         classpath 'org.aspectj:aspectjweaver:1.8.9'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
@@ -20,13 +20,12 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()
-        mavenLocal()
-        jcenter()
-        google()
+        maven {url 'https://maven.aliyun.com/repository/public'}
+        maven {url 'https://maven.aliyun.com/repository/google'}
         maven {
             url 'https://dl.bintray.com/hy/maven/'
         }
+        google()
     }
 }
 
@@ -47,11 +46,10 @@ ext {
     artifactDescription = 'Record Log library. Super simple, but with enough functionality.'
     artifactLabels = ['AOP']
     releaseVersionCode = 1
-    releaseVersionName = '1.0.0'
+    releaseVersionName = '1.0.5'
 
-    androidCompileSdkVersion = 26
-    androidBuildToolsVersion = '26.0.2'
-    androidSupportSdkVersion = '26.0.2'
+    androidCompileSdkVersion = 29
+    androidBuildToolsVersion = '29.0.2'
     minSdkVersion = 16
-    targetSdkVersion = 26
+    targetSdkVersion = 29
 }
